@@ -1,17 +1,11 @@
 import express, {Application, Request, Response, NextFunction} from "express";
+import * as imageController from './controllers/imageController';
 
 const app: Application = express();
 
-const add = (a: number, b: number): number => a+b;
+app.get('/getImage', imageController.getImage);
 
-app.get('/', (req: Request, res: Response) => {
-    console.log(5+5);
-    res.send("Hello");
-});
-
-app.get('/second', (req: Request, res: Response) => {
-    res.send("I am from the second API");
-});
+app.get('/postImage', imageController.postImage);
 
 
 app.listen(5000, () => console.log('Server Running'));
